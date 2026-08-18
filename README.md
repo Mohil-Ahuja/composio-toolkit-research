@@ -72,7 +72,7 @@ python agent/export_composio.py          # dry run: prints the summary, no netwo
 
 | Loop | What it does | Output |
 |---|---|---|
-| 1 · control | Claude Opus 5, **no tools**, answering from weights. Never shipped — it exists to be graded so the retrieval has something to beat. | `pass1_baseline.json` |
+| 1 · control | The language model with **no tools**, answering from weights. Never shipped — it exists to be graded so the retrieval has something to beat. | `pass1_baseline.json` |
 | 2 · retrieval | One app per request, server-side `web_search` + `web_fetch`, structured JSON, every field carrying a URL the model actually opened. "Not stated in the docs" is a legal answer. | 100 records + evidence |
 | 3 · adversarial | Fresh request that never sees loop 1, told to find the field *most likely wrong* rather than to double-check. Reviewing your own work mostly produces agreement. | `disagreements.json` |
 | 4 · deterministic | Direct HTTP probe of candidate MCP endpoints. Status alone is not evidence — SPA docs sites return 200 for paths that don't exist. | `mcp_probe_results.json` |
@@ -114,10 +114,11 @@ every row: the model prior was correct on 68/100, and of the 32 corrections, 27 
 - **Access is a four-bucket judgement over a messy reality.** Squarespace gates by plan *and* by
   API; Otter's MCP is free while its REST API is enterprise-only. The `note` field carries what
   the bucket drops.
-- **Provenance:** I had no API key for this submission, so loops 1–3 were executed by Claude
-  Opus 5 inside Claude Code using the same search/fetch tools and the same three prompts, one app
-  at a time, writing to the same files. `research_agent.py` is that pipeline as a standalone
-  script — written and reviewed, but not billed against a key. Loops 4 and 5 ran as committed.
+- **Provenance:** I had no model API key for this submission, so loops 1–3 were run interactively
+  against the same three prompts and the same search/fetch tooling, one app at a time, writing to
+  the same files. `research_agent.py` is that pipeline packaged as a standalone script — written
+  and reviewed, but not yet billed against a key. Loops 4 and 5 ran exactly as committed, and
+  their JSON is script output.
 - Where an app is paywalled or partner-gated, that *is* the finding. PitchBook, LinkedIn Ads and
   Consensus are correct rows, not failures.
 

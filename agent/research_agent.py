@@ -265,7 +265,7 @@ def main() -> None:
                         "records": disagreements}, indent=2), encoding="utf-8")
         print(f"\n{len(disagreements)} disagreements written to data/disagreements.json for human review")
 
-    # Opus 5 list pricing, 2026-06: $5 / $25 per Mtok in / out.
+    # List pricing for the configured model, 2026-06: $5 / $25 per Mtok in / out.
     cost = totals["input_tokens"] / 1e6 * 5 + totals["output_tokens"] / 1e6 * 25
     print(f"\npass {args.pass_no}: {len(done)} records  "
           f"in={totals['input_tokens']:,} out={totals['output_tokens']:,} "

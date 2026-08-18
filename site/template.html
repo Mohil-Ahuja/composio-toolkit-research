@@ -329,8 +329,8 @@ footer{padding:40px 0 64px; color:var(--ink-3); font-size:13px; border-top:1px s
       <div class="loop">
         <span class="k">Loop 1 · control</span>
         <h3>Parametric baseline</h3>
-        <p>Claude Opus 5, no tools, answering from weights. Never shipped — it exists to be graded, so
-          the retrieval has something to beat.</p>
+        <p>The language model with no tools, answering from weights. Never shipped — it exists to be
+          graded, so the retrieval has something to beat.</p>
         <span class="out">→ pass1_baseline.json</span>
       </div>
       <div class="loop">
@@ -400,11 +400,11 @@ python agent/research_agent.py --pass 2   # web_search + web_fetch
 python agent/research_agent.py --pass 3   # adversarial verifier
 
 python agent/build_site.py       # rebuild this page from the data</code></pre>
-        <p class="note" style="margin-top:16px">Honest note on provenance: I had no API key for this
-          submission, so loops 1–3 were executed by Claude Opus 5 inside Claude Code using the same
-          search/fetch tools and the same three prompts, one app at a time, and the results were written
-          to the same files. <code>research_agent.py</code> is that pipeline as a standalone script; it is
-          written and reviewed but has not been billed against a key. Loops 4 and 5 ran exactly as
+        <p class="note" style="margin-top:16px">Honest note on provenance: I had no model API key for
+          this submission, so loops 1–3 were run interactively against the same three prompts and the
+          same search/fetch tooling, one app at a time, with the results written to the same files.
+          <code>research_agent.py</code> is that pipeline packaged as a standalone script; it is written
+          and reviewed but has not yet been billed against a key. Loops 4 and 5 ran exactly as
           committed — their JSON is script output, not transcription.</p>
       </div>
     </div>

@@ -1,7 +1,7 @@
 {
   "_meta": {
     "pass": "1 — parametric baseline",
-    "method": "Claude Opus 5 answering from model weights only. No web search, no doc fetch, no tools. Written before any retrieval so it can be graded honestly against the verified gold set.",
+    "method": "Language model answering from weights only. No web search, no doc fetch, no tools. Written before any retrieval so it can be graded honestly against the verified gold set.",
     "fields": "auth (primary credential a developer actually uses), access (self_serve_free | self_serve_paid | gated | partner), api (rest | graphql | both | none), mcp (official | community | none), verdict (build | caveats | blocked)",
     "generated": "2026-08-18"
   },

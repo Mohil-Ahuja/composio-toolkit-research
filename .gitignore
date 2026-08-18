@@ -5,3 +5,4 @@ __pycache__/
 venv/
 data/agent_pass*.json
 data/disagreements.json
+.claude/
