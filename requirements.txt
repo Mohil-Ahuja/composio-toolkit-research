@@ -1,0 +1,3 @@
+requests>=2.31        # deterministic verification loops (verify_probe.py, composio_gap.py)
+anthropic>=0.116      # LLM research loops (research_agent.py) — needs ANTHROPIC_API_KEY
+composio>=0.7         # optional: publish findings to Notion/Sheets via export_composio.py

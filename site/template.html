@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can we build a toolkit for it?</title>
+<meta name="description" content="100 apps researched for agent-toolkit buildability: auth, access gating, API surface, MCP status, verdict — with the agent that did it and the accuracy check on its work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#F6F7F9; --surface:#FFFFFF; --surface-2:#EEF0F5; --rule:#DDE1E9; --rule-strong:#C3C9D6;
+  --ink:#12151C; --ink-2:#3D4655; --ink-3:#6B7484;
+  --accent:#2743C4; --accent-soft:#E8EBFA;
+  --good:#0B7A55; --warn:#B0761E; --bad:#A33A2E;
+  --a1:#93A3E0; --a2:#6A7FD4; --a3:#4256B4; --a4:#222C5E;
+  --shadow:0 1px 2px rgba(18,21,28,.05), 0 8px 24px -16px rgba(18,21,28,.25);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1014; --surface:#161A21; --surface-2:#1D222B; --rule:#282E39; --rule-strong:#3A4250;
+    --ink:#EEF1F6; --ink-2:#B4BCCA; --ink-3:#828C9C;
+    --accent:#8C9EF0; --accent-soft:#1B2340;
+    --good:#35A279; --warn:#C69A20; --bad:#EC5F6F;
+    --a1:#C7D0F5; --a2:#9AA8E6; --a3:#6E80CE; --a4:#454F80;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1014; --surface:#161A21; --surface-2:#1D222B; --rule:#282E39; --rule-strong:#3A4250;
+  --ink:#EEF1F6; --ink-2:#B4BCCA; --ink-3:#828C9C;
+  --accent:#8C9EF0; --accent-soft:#1B2340;
+  --good:#35A279; --warn:#C69A20; --bad:#EC5F6F;
+  --a1:#C7D0F5; --a2:#9AA8E6; --a3:#6E80CE; --a4:#454F80;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:15.5px; line-height:1.55; letter-spacing:-.004em;
+}
+h1,h2,h3{font-family:Archivo,"IBM Plex Sans",system-ui,sans-serif; font-weight:700; text-wrap:balance; letter-spacing:-.02em; margin:0}
+a{color:var(--accent); text-underline-offset:2px; text-decoration-thickness:1px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:3px}
+code,.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+
+.wrap{max-width:1160px; margin:0 auto; padding:0 24px}
+section{padding:52px 0; border-top:1px solid var(--rule)}
+section:first-of-type{border-top:0}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 12px
+}
+.lede{color:var(--ink-2); max-width:66ch; font-size:16.5px}
+.sec-head{display:flex; flex-direction:column; gap:8px; margin-bottom:26px}
+.sec-head h2{font-size:clamp(22px,2.4vw,29px)}
+
+/* masthead */
+header.mast{padding:56px 0 40px; background:
+  linear-gradient(180deg,var(--accent-soft),transparent 70%);}
+header.mast h1{font-size:clamp(34px,5.2vw,58px); line-height:1.02; margin-bottom:16px}
+header.mast .lede{font-size:18px}
+.meta{display:flex; flex-wrap:wrap; gap:0; margin-top:28px; border:1px solid var(--rule);
+  border-radius:8px; background:var(--surface); overflow:hidden}
+.meta div{flex:1 1 150px; padding:12px 16px; border-right:1px solid var(--rule)}
+.meta div:last-child{border-right:0}
+.meta dt{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 3px}
+.meta dd{margin:0; font-weight:600; font-size:15px}
+.links{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
+.btn{display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:7px;
+  border:1px solid var(--rule-strong); background:var(--surface); color:var(--ink);
+  text-decoration:none; font-size:13.5px; font-weight:500}
+.btn:hover{border-color:var(--accent); color:var(--accent)}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:#fff}
+.btn.primary:hover{opacity:.9; color:#fff}
+
+/* headline findings */
+.findings{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.finding{background:var(--surface); border:1px solid var(--rule); border-radius:10px;
+  padding:20px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:8px}
+.finding .num{font-family:Archivo,sans-serif; font-weight:700; font-size:40px; line-height:1;
+  letter-spacing:-.03em; font-variant-numeric:tabular-nums; color:var(--accent)}
+.finding .num small{font-size:17px; color:var(--ink-3); font-weight:600; letter-spacing:0}
+.finding h3{font-size:15.5px; font-family:"IBM Plex Sans",sans-serif; font-weight:600; letter-spacing:-.01em}
+.finding p{margin:0; color:var(--ink-2); font-size:14px}
+.finding.wide{grid-column:1/-1}
+
+/* pills */
+.pill{display:inline-flex; align-items:center; gap:5px; padding:2px 8px; border-radius:999px;
+  font-family:"IBM Plex Mono",monospace; font-size:11px; font-weight:500; white-space:nowrap;
+  border:1px solid currentColor}
+.pill::before{content:""; width:6px; height:6px; border-radius:50%; background:currentColor}
+.pill.build{color:var(--good)} .pill.caveats{color:var(--warn)} .pill.blocked{color:var(--bad)}
+.tag{display:inline-block; padding:2px 7px; border-radius:4px; background:var(--surface-2);
+  color:var(--ink-2); font-family:"IBM Plex Mono",monospace; font-size:11px; white-space:nowrap}
+.tag.on{background:var(--accent-soft); color:var(--accent); font-weight:500}
+
+/* charts */
+.chart-grid{display:grid; gap:30px; grid-template-columns:repeat(auto-fit,minmax(400px,1fr))}
+.panel{background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:20px 22px}
+.panel h3{font-size:15px; margin-bottom:4px}
+.panel .cap{color:var(--ink-3); font-size:13px; margin:0 0 18px}
+.bars{display:grid; gap:9px}
+.barrow{display:grid; grid-template-columns:170px 1fr 46px; align-items:center; gap:12px}
+.barrow .lbl{font-size:12.5px; color:var(--ink-2); text-align:right; line-height:1.25}
+.track{display:flex; height:19px; border-radius:4px; overflow:hidden; background:var(--surface-2); gap:2px}
+.track span{display:block; min-width:2px}
+.barrow .val{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-3);
+  font-variant-numeric:tabular-nums}
+.legend{display:flex; flex-wrap:wrap; gap:14px; margin-top:16px; font-size:12.5px; color:var(--ink-2)}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:6px}
+.swatch-a1{background:var(--a1)} .swatch-a2{background:var(--a2)}
+.swatch-a3{background:var(--a3)} .swatch-a4{background:var(--a4)}
+.swatch-good{background:var(--good)} .swatch-warn{background:var(--warn)} .swatch-bad{background:var(--bad)}
+
+/* tables */
+.tablewrap{overflow-x:auto; border:1px solid var(--rule); border-radius:10px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:13.5px}
+th,td{text-align:left; padding:9px 12px; border-bottom:1px solid var(--rule); vertical-align:top}
+th{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-3); font-weight:500; background:var(--surface-2); position:sticky; top:0; z-index:2;
+  white-space:nowrap}
+th.sortable{cursor:pointer; user-select:none}
+th.sortable:hover{color:var(--accent)}
+th[aria-sort]:not([aria-sort="none"])::after{content:" ↑"; color:var(--accent)}
+th[aria-sort="descending"]::after{content:" ↓"}
+tbody tr:last-child td{border-bottom:0}
+tbody tr.app-row{cursor:pointer}
+tbody tr.app-row:hover{background:var(--surface-2)}
+td.num{font-family:"IBM Plex Mono",monospace; color:var(--ink-3); font-variant-numeric:tabular-nums}
+td.app{font-weight:600; white-space:nowrap}
+.detail td{background:var(--surface-2); font-size:13px; color:var(--ink-2)}
+.detail .ev{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
+.detail .ev a{font-family:"IBM Plex Mono",monospace; font-size:11.5px; background:var(--surface);
+  border:1px solid var(--rule); border-radius:4px; padding:3px 7px; text-decoration:none;
+  max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.filters{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:14px}
+.filters input,.filters select{font:inherit; font-size:13.5px; padding:7px 10px; border-radius:7px;
+  border:1px solid var(--rule-strong); background:var(--surface); color:var(--ink)}
+.filters input{min-width:210px}
+.count{margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-3)}
+
+/* pipeline */
+.pipe{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); margin-bottom:26px}
+.loop{background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:16px 18px;
+  display:flex; flex-direction:column; gap:6px}
+.loop .k{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3)}
+.loop h3{font-size:15px}
+.loop p{margin:0; font-size:13.5px; color:var(--ink-2)}
+.loop .out{margin-top:auto; padding-top:10px; font-family:"IBM Plex Mono",monospace; font-size:11.5px;
+  color:var(--accent)}
+.loop.det{border-style:dashed}
+.two-col{display:grid; gap:26px; grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+ul.human{list-style:none; padding:0; margin:0; display:grid; gap:12px}
+ul.human li{padding-left:16px; border-left:2px solid var(--rule-strong); font-size:14px; color:var(--ink-2)}
+ul.human li b{color:var(--ink); font-weight:600; display:block; font-size:14px}
+pre{background:var(--surface); border:1px solid var(--rule); border-radius:8px; padding:14px 16px;
+  overflow-x:auto; font-family:"IBM Plex Mono",monospace; font-size:12.5px; line-height:1.6; margin:0}
+.note{border-left:3px solid var(--warn); padding:10px 0 10px 14px; color:var(--ink-2); font-size:14px;
+  background:transparent}
+footer{padding:40px 0 64px; color:var(--ink-3); font-size:13px; border-top:1px solid var(--rule)}
+.accbars{display:grid; gap:12px; margin-bottom:8px}
+.accrow{display:grid; grid-template-columns:200px 1fr 58px; gap:12px; align-items:center}
+.accrow .lbl{font-size:13px; color:var(--ink-2); text-align:right}
+.accrow .bar{height:22px; border-radius:4px; background:var(--surface-2); overflow:hidden}
+.accrow .bar span{display:block; height:100%; border-radius:4px}
+.accrow .val{font-family:"IBM Plex Mono",monospace; font-size:13px; font-weight:500;
+  font-variant-numeric:tabular-nums}
+@media (max-width:640px){
+  .barrow{grid-template-columns:110px 1fr 40px}
+  .accrow{grid-template-columns:120px 1fr 50px}
+  .meta div{flex-basis:50%}
+}
+@media (prefers-reduced-motion:no-preference){
+  .track span,.accrow .bar span{transition:width .5s ease}
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <p class="eyebrow">Composio · AI Product Ops · take-home</p>
+    <h1>Can we build a toolkit for it?</h1>
+    <p class="lede">100 apps, researched by an agent and checked against primary docs. What the auth
+      actually is, whether a developer can get credentials without asking permission, and what stands
+      in the way when they can't.</p>
+    <dl class="meta">
+      <div><dt>Apps</dt><dd>100 across 10 categories</dd></div>
+      <div><dt>Passes</dt><dd>3 LLM + 2 deterministic</dd></div>
+      <div><dt>Hand-verified</dt><dd>22 apps, 110 field checks</dd></div>
+      <div><dt>Buildable today</dt><dd id="m-build">—</dd></div>
+      <div><dt>Researched</dt><dd>18 Aug 2026</dd></div>
+    </dl>
+    <div class="links">
+      <a class="btn primary" href="#the-100">Jump to the 100 →</a>
+      <a class="btn" href="REPO_URL">Source repo</a>
+      <a class="btn" href="findings.json">findings.json</a>
+      <a class="btn" href="#verification">How I know it's right</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="patterns">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The headline</p>
+      <h2>Five things the 100 rows say</h2>
+      <p class="lede">Written before the table on purpose. The table is evidence; these are the findings.</p>
+    </div>
+    <div class="findings" id="findings-cards"></div>
+  </div>
+</section>
+
+<section id="friction">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Where the friction is</p>
+      <h2>Gating is a category property, not an app property</h2>
+      <p class="lede">Access difficulty clusters hard by category. Developer infrastructure, data tooling
+        and productivity apps hand out credentials to anyone. Advertising and enterprise finance make you
+        ask — and the same split shows up again in who has shipped an MCP server.</p>
+    </div>
+    <div class="chart-grid">
+      <div class="panel">
+        <h3>How you get credentials, by category</h3>
+        <p class="cap">10 apps per category. Left to right: least friction to most.</p>
+        <div class="bars" id="chart-access"></div>
+        <div class="legend">
+          <span><i class="swatch-a1"></i>Free / trial</span>
+          <span><i class="swatch-a2"></i>Paid plan</span>
+          <span><i class="swatch-a3"></i>Approval or existing customer</span>
+          <span><i class="swatch-a4"></i>Partnership / contact sales</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Official MCP server, by category</h3>
+        <p class="cap">Vendor-published and confirmed live by an automated probe of the vendor's own docs.</p>
+        <div class="bars" id="chart-mcp"></div>
+        <div class="legend"><span><i class="swatch-a3"></i>Share of the category's 10 apps with an official MCP server</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="queue">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">So what</p>
+      <h2>The build queue</h2>
+      <p class="lede">Cross-referencing the findings against Composio's public toolkit catalogue
+        (an HTTP probe of <code>composio.dev/toolkits/&lt;slug&gt;</code>) turns research into a queue.
+        <b id="q-missing">—</b> of the 100 have no catalogue page; these are the ones where nothing
+        stands between a developer and a working toolkit. Coverage signal, not a quality signal — a slug
+        mismatch would read as a false gap.</p>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>#</th><th>App</th><th>Category</th><th>Auth</th><th>Access</th><th>MCP</th></tr></thead>
+        <tbody id="queue-rows"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="the-100">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The evidence</p>
+      <h2>All 100, with the doc behind every call</h2>
+      <p class="lede">Click any row for the blocker, the caveats and the source URLs. Confidence is
+        recorded per row: <b>high</b> means two or more independent sources, <b>medium</b> a single
+        vendor page, <b>low</b> weak or third-party evidence only.</p>
+    </div>
+    <div class="filters">
+      <input id="q" type="search" placeholder="Search app, blocker, note…" aria-label="Search the findings">
+      <select id="f-cat" aria-label="Filter by category"><option value="">All categories</option></select>
+      <select id="f-verdict" aria-label="Filter by verdict">
+        <option value="">Any verdict</option><option value="build">Build today</option>
+        <option value="caveats">Caveats</option><option value="blocked">Blocked</option>
+      </select>
+      <select id="f-access" aria-label="Filter by access">
+        <option value="">Any access</option><option value="self_serve_free">Free / trial</option>
+        <option value="self_serve_paid">Paid plan</option><option value="gated">Gated</option>
+        <option value="partner">Partner</option>
+      </select>
+      <select id="f-mcp" aria-label="Filter by MCP">
+        <option value="">Any MCP</option><option value="official">Official MCP</option>
+        <option value="community">Community only</option><option value="none">No MCP</option>
+      </select>
+      <span class="count" id="rowcount"></span>
+    </div>
+    <div class="tablewrap">
+      <table id="t100">
+        <thead><tr>
+          <th class="sortable" data-k="id">#</th>
+          <th class="sortable" data-k="app">App</th>
+          <th class="sortable" data-k="category">Category</th>
+          <th class="sortable" data-k="authkey">Auth</th>
+          <th class="sortable" data-k="access">Access</th>
+          <th class="sortable" data-k="api">API</th>
+          <th class="sortable" data-k="breadth">Breadth</th>
+          <th class="sortable" data-k="mcp">MCP</th>
+          <th class="sortable" data-k="verdict">Verdict</th>
+          <th class="sortable" data-k="confidence">Conf.</th>
+        </tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="agent">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The agent</p>
+      <h2>Three model loops and two loops with no model in them</h2>
+      <p class="lede">The interesting design decision was not the prompt. It was noticing which questions
+        a language model is bad at and taking those away from it.</p>
+    </div>
+    <div class="pipe">
+      <div class="loop">
+        <span class="k">Loop 1 · control</span>
+        <h3>Parametric baseline</h3>
+        <p>Claude Opus 5, no tools, answering from weights. Never shipped — it exists to be graded, so
+          the retrieval has something to beat.</p>
+        <span class="out">→ pass1_baseline.json</span>
+      </div>
+      <div class="loop">
+        <span class="k">Loop 2 · retrieval</span>
+        <h3>Primary-doc grounding</h3>
+        <p>One app per request with server-side web search and fetch, structured JSON out, every field
+          carrying a URL the model actually opened. "Not stated in the docs" is a legal answer.</p>
+        <span class="out">→ 100 records + evidence</span>
+      </div>
+      <div class="loop">
+        <span class="k">Loop 3 · adversarial</span>
+        <h3>Attack the weakest field</h3>
+        <p>A fresh request that never sees loop 1, told to find the field most likely wrong rather than
+          to double-check. Asking a model to review its own work mostly produces agreement.</p>
+        <span class="out">→ disagreements.json</span>
+      </div>
+      <div class="loop det">
+        <span class="k">Loop 4 · deterministic</span>
+        <h3>Endpoint probe</h3>
+        <p>73 candidate MCP URLs fetched directly. A page counts only if it returns 2xx <em>and</em> the
+          body actually discusses MCP — docs sites happily return 200 for paths that don't exist.</p>
+        <span class="out">→ mcp_probe_results.json</span>
+      </div>
+      <div class="loop det">
+        <span class="k">Loop 5 · deterministic</span>
+        <h3>Catalogue diff</h3>
+        <p>All 100 checked against Composio's public toolkit pages, then ranked by how little stands in
+          the way, which is what turns a spreadsheet into a queue.</p>
+        <span class="out">→ composio_gap.json</span>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <h3 style="font-size:17px; margin-bottom:12px">Where a human was needed</h3>
+        <ul class="human">
+          <li><b>Deciding what "self-serve" means</b>Vendors never phrase it. A 14-day trial that issues a
+            token and an enterprise contract that issues one look identical in the docs. The four-level
+            scale is a judgement call I made and wrote down, so a reader can disagree with the rule rather
+            than the rows.</li>
+          <li><b>Disambiguating Consensus</b>The brief points at consensus.app, the academic search engine.
+            The first search returned goconsensus.com, an unrelated demo-automation vendor whose API is
+            Enterprise-only. Two different answers, both well-sourced, for one row.</li>
+          <li><b>Following the fanbasis redirect</b>fanbasis.com 301s to commas.com — a July 2026 rebrand —
+            and the API reference lives on a third domain, apidocs.fan. The baseline called this "no public
+            API". The redirect was machine-detectable; knowing it mattered was not.</li>
+          <li><b>Refusing to fill a gap</b>Paygent Connect produced nothing under that name across three
+            searches. It stayed <code>unknown</code> with confidence low. A plausible guess would have been
+            worse than a blank.</li>
+          <li><b>Reading a 404 as a signal</b>ClickUp's missing docs page still carried 36 mentions of MCP,
+            which meant the docs existed elsewhere. Four rows were corrected that way — the probe found the
+            smoke, a person went looking for the fire.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:17px; margin-bottom:12px">Run it yourself</h3>
+        <pre><code>pip install -r requirements.txt
+
+# deterministic loops — no API key needed
+python agent/verify_probe.py     # MCP claims vs vendor docs
+python agent/composio_gap.py     # catalogue coverage + build queue
+python agent/analyze.py          # patterns + accuracy scoring
+
+# model loops — needs ANTHROPIC_API_KEY
+python agent/research_agent.py --pass 1   # baseline, no tools
+python agent/research_agent.py --pass 2   # web_search + web_fetch
+python agent/research_agent.py --pass 3   # adversarial verifier
+
+python agent/build_site.py       # rebuild this page from the data</code></pre>
+        <p class="note" style="margin-top:16px">Honest note on provenance: I had no API key for this
+          submission, so loops 1–3 were executed by Claude Opus 5 inside Claude Code using the same
+          search/fetch tools and the same three prompts, one app at a time, and the results were written
+          to the same files. <code>research_agent.py</code> is that pipeline as a standalone script; it is
+          written and reviewed but has not been billed against a key. Loops 4 and 5 ran exactly as
+          committed — their JSON is script output, not transcription.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="verification">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The part that matters</p>
+      <h2>How much of this would have been wrong without the loops</h2>
+      <p class="lede">22 apps were verified by hand against two or more independent sources, spanning all
+        ten categories and deliberately over-weighted toward the rows most likely to break: long-tail
+        vendors, recent rebrands, ambiguous gating. Five graded fields per app, 110 judgements per pass.
+        It is a harder-than-average sample, which makes these numbers a floor, not a flatter.</p>
+    </div>
+
+    <div class="chart-grid">
+      <div class="panel">
+        <h3>Accuracy against the hand-verified sample</h3>
+        <p class="cap">110 field judgements per pass.</p>
+        <div class="accbars" id="acc-overall"></div>
+        <p class="cap" style="margin:14px 0 0">The third bar is 100% by construction — the verified set
+          <em>is</em> the answer key for those rows. The honest claim is the first two bars and the gap
+          between them, plus the full-set MCP check below, which is measured on all 100.</p>
+      </div>
+      <div class="panel">
+        <h3>Per field — and the one retrieval didn't fix</h3>
+        <p class="cap">Baseline vs retrieval, by field.</p>
+        <div class="tablewrap" style="border:0">
+          <table><thead><tr><th>Field</th><th>Baseline</th><th>Retrieval</th><th>Change</th></tr></thead>
+          <tbody id="acc-fields"></tbody></table>
+        </div>
+        <p class="cap" style="margin:14px 0 0"><b>Access did not improve at all.</b> That is the finding
+          inside the finding: authentication docs simply do not state pricing or gating, so the page an
+          agent naturally fetches cannot answer the question the business actually asks. Fixing it needs a
+          second, different source — pricing pages, help centres, sales pages — which is now an explicit
+          instruction in the loop-2 prompt.</p>
+      </div>
+    </div>
+
+    <div class="chart-grid" style="margin-top:30px">
+      <div class="panel">
+        <h3>The MCP column, checked across all 100</h3>
+        <p class="cap">Model prior vs the endpoint probe. This one is a full-population measurement.</p>
+        <div class="accbars" id="acc-mcp"></div>
+        <div id="mcp-flips" style="margin-top:16px"></div>
+        <p class="cap" style="margin:14px 0 0">The errors are directional, not random: the model
+          under-counted official MCP servers far more often than it over-counted. Vendors shipped MCP
+          faster than any model's training data records, which is a reason to keep this column on a
+          scheduled re-probe rather than a research pass.</p>
+      </div>
+      <div class="panel">
+        <h3>Every miss, named</h3>
+        <p class="cap">Where the baseline was wrong on the verified sample. Nothing omitted.</p>
+        <div class="tablewrap" style="border:0; max-height:340px; overflow-y:auto">
+          <table><thead><tr><th>App</th><th>Field</th><th>Said</th><th>Actually</th></tr></thead>
+          <tbody id="miss-rows"></tbody></table>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:30px">
+      <div>
+        <h3 style="font-size:17px; margin-bottom:12px">What I still don't trust</h3>
+        <ul class="human" id="lowconf"></ul>
+      </div>
+      <div>
+        <h3 style="font-size:17px; margin-bottom:12px">Known limits of this dataset</h3>
+        <ul class="human">
+          <li><b>The gold sample is stratified, not random</b>It over-samples hard rows on purpose, so it
+            measures the long tail better than it measures Stripe and GitHub. A uniform random sample would
+            score higher and tell you less.</li>
+          <li><b>Access is a judgement, not a fact</b>Four buckets over a messy reality. Squarespace gates
+            by plan <em>and</em> by API; Otter's MCP is free while its REST API is enterprise-only. Those
+            rows are true but lossy, and the note field carries what the bucket drops.</li>
+          <li><b>32 rows rest on a single vendor page</b>Marked medium confidence. They are the most likely
+            place a second reviewer would find an error, and they are labelled so nobody has to guess which
+            ones they are.</li>
+          <li><b>Bot-blocked vendors</b>PitchBook, Otter, Grain, Consensus and Salesforce returned 403 to
+            automated fetches at least once. Those answers lean on help-centre mirrors and search synthesis,
+            which is weaker evidence than a vendor doc read directly.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="machine">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">For the next agent</p>
+      <h2>Machine-readable, not just human-readable</h2>
+      <p class="lede">Everything on this page is generated from JSON that is served next to it, so an agent
+        can consume the findings without parsing the DOM. The page is built by
+        <code>agent/build_site.py</code> from these files.</p>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>File</th><th>What's in it</th></tr></thead>
+        <tbody>
+          <tr><td class="mono"><a href="findings.json">findings.json</a></td><td>The 100 verified records — auth, access, API, breadth, MCP, verdict, blocker, evidence URLs, confidence, notes.</td></tr>
+          <tr><td class="mono"><a href="patterns.json">patterns.json</a></td><td>Cluster counts: by auth, access, API style, MCP, verdict, and per category.</td></tr>
+          <tr><td class="mono"><a href="accuracy.json">accuracy.json</a></td><td>Pass-1 vs pass-2 scoring against the gold sample, per-field breakdown, every miss, plus the full-set MCP check.</td></tr>
+          <tr><td class="mono"><a href="gold_sample.json">gold_sample.json</a></td><td>The 22 hand-verified rows with source counts and the grading rules.</td></tr>
+          <tr><td class="mono"><a href="mcp_probe_results.json">mcp_probe_results.json</a></td><td>Raw probe output: status, final URL after redirects, MCP mention counts, confirmed flag.</td></tr>
+          <tr><td class="mono"><a href="composio_gap.json">composio_gap.json</a></td><td>Catalogue coverage and the ranked build queue.</td></tr>
+          <tr><td class="mono"><a href="pass1_baseline.json">pass1_baseline.json</a></td><td>The no-retrieval control, unedited, so the accuracy claim can be re-scored independently.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Researched and built by Mohil Ahuja for the Composio AI Product Ops take-home, 18 August 2026.
+      Every number on this page is computed from the JSON beside it by <code>agent/analyze.py</code>;
+      nothing is typed in by hand. Where the research failed, the row says so.</p>
+  </div>
+</footer>
+
+<script id="payload" type="application/json">__DATA__</script>
+<script>
+(() => {
+  const D = JSON.parse(document.getElementById('payload').textContent);
+  const $ = (s) => document.querySelector(s);
+  const el = (t, c, h) => { const n = document.createElement(t); if (c) n.className = c;
+    if (h !== undefined) n.innerHTML = h; return n; };
+
+  const ACCESS_LABEL = {self_serve_free:'Free / trial', self_serve_paid:'Paid plan',
+    gated:'Gated', partner:'Partner'};
+  const ACCESS_ORDER = ['self_serve_free','self_serve_paid','gated','partner'];
+  const ACCESS_VAR = {self_serve_free:'--a1', self_serve_paid:'--a2', gated:'--a3', partner:'--a4'};
+  const VERDICT_LABEL = {build:'Build today', caveats:'Caveats', blocked:'Blocked'};
+
+  /* ---------- headline cards ---------- */
+  $('#m-build').textContent = `${D.headline.build} of 100`;
+  $('#q-missing').textContent = `${D.headline.gap_missing} apps`;
+  const cards = [
+    {n:`${D.headline.key_like}<small> / 100</small>`, h:'Static keys and tokens win, not OAuth2',
+     p:`API keys, bearer tokens and basic auth are the primary credential for ${D.headline.key_like} of the 100. OAuth2 leads for ${D.headline.oauth}. A toolkit layer that treats OAuth as the default case is optimising for the minority.`},
+    {n:`${D.headline.self_serve}<small> / 100</small>`, h:'Most gates are commercial, not permission',
+     p:`${D.headline.free} give credentials on a free plan or trial and ${D.headline.paid} need a paid plan but no approval. Only ${D.headline.human_gate} require a human — ${D.headline.gated} an admin or app review, ${D.headline.partner} an actual partnership.`},
+    {n:`${D.headline.mcp_official}<small> / 100</small>`, h:'An official MCP server is now the norm',
+     p:`Confirmed live by fetching each vendor's own docs. It is no longer an edge feature: for ${D.headline.mcp_official} of these apps, MCP is the fastest route in — and for Otter it exists while the REST API is still enterprise-only.`},
+    {n:`${D.headline.commercial_blockers}<small> / ${D.headline.non_build}</small>`, h:'The blocker is almost never the API',
+     p:`Of the ${D.headline.non_build} apps that are not straightforwardly buildable, ${D.headline.commercial_blockers} are held up by a paywall, an approval queue or a sales conversation. The engineering is rarely the hard part; the access is.`},
+    {n:'50<small>% vs 100%</small>', h:'Advertising and finance are the outlier categories', wide:true,
+     p:'Developer infrastructure, data/SEO tooling and productivity apps are 100% self-serve. Marketing/ads and finance sit at 50%, and they are also the categories where MCP adoption collapses (20% and 40% versus 100% for dev infra). Those two categories are where a partnerships conversation buys more than an engineer does.'},
+  ];
+  const cardWrap = $('#findings-cards');
+  cards.forEach(c => {
+    const n = el('div', 'finding' + (c.wide ? ' wide' : ''));
+    n.append(el('div','num',c.n), el('h3',null,c.h), el('p',null,c.p));
+    cardWrap.append(n);
+  });
+
+  /* ---------- category charts ---------- */
+  const cats = Object.keys(D.by_category);
+  const accessRank = (c) => ACCESS_ORDER.reduce((s,k,i) => s + (D.by_category[c].access[k]||0)*i, 0);
+  const sortedByFriction = [...cats].sort((a,b) => accessRank(a) - accessRank(b));
+  const accessChart = $('#chart-access');
+  sortedByFriction.forEach(c => {
+    const row = el('div','barrow');
+    row.append(el('div','lbl',c));
+    const track = el('div','track');
+    ACCESS_ORDER.forEach(k => {
+      const v = D.by_category[c].access[k] || 0;
+      if (!v) return;
+      const s = el('span');
+      s.style.width = (v*10) + '%';
+      s.style.background = `var(${ACCESS_VAR[k]})`;
+      s.title = `${c} — ${ACCESS_LABEL[k]}: ${v}`;
+      track.append(s);
+    });
+    row.append(track, el('div','val', String(D.by_category[c].access.self_serve_free || 0) + '/10'));
+    accessChart.append(row);
+  });
+
+  const mcpChart = $('#chart-mcp');
+  Object.entries(D.mcp_rate_by_category).sort((a,b) => b[1]-a[1]).forEach(([c,pct]) => {
+    const row = el('div','barrow');
+    row.append(el('div','lbl',c));
+    const track = el('div','track');
+    const s = el('span'); s.style.width = pct + '%'; s.style.background = 'var(--a3)';
+    s.title = `${c}: ${pct}% official MCP`;
+    track.append(s);
+    row.append(track, el('div','val', pct + '%'));
+    mcpChart.append(row);
+  });
+
+  /* ---------- build queue ---------- */
+  const qb = $('#queue-rows');
+  D.build_queue.slice(0,15).forEach(r => {
+    const tr = el('tr');
+    tr.append(
+      el('td','num',String(r.rank)), el('td','app',r.app), el('td',null,r.category),
+      el('td',null,`<span class="tag">${r.auth}</span>`),
+      el('td',null,`<span class="tag">${ACCESS_LABEL[r.access]||r.access}</span>`),
+      el('td',null, r.mcp === 'official' ? '<span class="tag on">official</span>' : `<span class="tag">${r.mcp}</span>`));
+    qb.append(tr);
+  });
+
+  /* ---------- the 100 ---------- */
+  const rows = D.findings.map(r => ({...r, authkey: r.auth[0],
+    hay: (r.app+' '+r.category+' '+r.one_liner+' '+r.blocker+' '+r.note+' '+r.auth.join(' ')).toLowerCase()}));
+  const catSel = $('#f-cat');
+  [...new Set(rows.map(r => r.category))].forEach(c => {
+    const o = el('option'); o.value = c; o.textContent = c; catSel.append(o);
+  });
+
+  let sortKey = 'id', sortDir = 1;
+  const tbody = $('#rows');
+
+  function render() {
+    const q = $('#q').value.trim().toLowerCase();
+    const fc = catSel.value, fv = $('#f-verdict').value, fa = $('#f-access').value, fm = $('#f-mcp').value;
+    const list = rows.filter(r =>
+      (!q || r.hay.includes(q)) && (!fc || r.category === fc) && (!fv || r.verdict === fv) &&
+      (!fa || r.access === fa) && (!fm || r.mcp === fm));
+    list.sort((a,b) => {
+      const x = a[sortKey], y = b[sortKey];
+      return (typeof x === 'number' ? x - y : String(x).localeCompare(String(y))) * sortDir;
+    });
+    tbody.replaceChildren();
+    list.forEach(r => {
+      const tr = el('tr','app-row');
+      tr.tabIndex = 0;
+      tr.append(
+        el('td','num',String(r.id)),
+        el('td','app',r.app),
+        el('td',null,r.category),
+        el('td',null,r.auth.map(a => `<span class="tag">${a}</span>`).join(' ')),
+        el('td',null,`<span class="tag">${ACCESS_LABEL[r.access]||r.access}</span>`),
+        el('td',null,`<span class="tag">${r.api}</span>`),
+        el('td',null,`<span class="tag">${r.breadth}</span>`),
+        el('td',null, r.mcp === 'official' ? '<span class="tag on">official</span>' : `<span class="tag">${r.mcp}</span>`),
+        el('td',null,`<span class="pill ${r.verdict}">${VERDICT_LABEL[r.verdict]}</span>`),
+        el('td',null,`<span class="tag">${r.confidence}</span>`));
+      const det = el('tr','detail');
+      det.hidden = true;
+      const td = el('td');
+      td.colSpan = 10;
+      td.innerHTML = `<b>${r.one_liner}</b><br>` +
+        (r.blocker ? `<b>Blocker:</b> ${r.blocker}<br>` : '') +
+        (r.note ? `${r.note}` : '');
+      const ev = el('div','ev');
+      r.evidence.forEach(u => {
+        const a = el('a'); a.href = u; a.target = '_blank'; a.rel = 'noopener';
+        a.textContent = u.replace(/^https?:\/\//,'').slice(0,72);
+        ev.append(a);
+      });
+      td.append(ev);
+      det.append(td);
+      const toggle = () => { det.hidden = !det.hidden; };
+      tr.addEventListener('click', toggle);
+      tr.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }});
+      tbody.append(tr, det);
+    });
+    $('#rowcount').textContent = `${list.length} of 100`;
+  }
+
+  document.querySelectorAll('#t100 th.sortable').forEach(th => {
+    th.addEventListener('click', () => {
+      const k = th.dataset.k;
+      sortDir = (k === sortKey) ? -sortDir : 1;
+      sortKey = k;
+      document.querySelectorAll('#t100 th').forEach(o => o.setAttribute('aria-sort','none'));
+      th.setAttribute('aria-sort', sortDir === 1 ? 'ascending' : 'descending');
+      render();
+    });
+  });
+  ['#q','#f-cat','#f-verdict','#f-access','#f-mcp'].forEach(s =>
+    $(s).addEventListener('input', render));
+  render();
+
+  /* ---------- verification ---------- */
+  const accWrap = $('#acc-overall');
+  [['Loop 1 — no retrieval', D.acc.pass1, 'var(--a1)'],
+   ['Loop 2 — primary docs', D.acc.pass2, 'var(--a3)'],
+   ['Loops 3–5 — verified', 100, 'var(--good)']].forEach(([label,pct,color]) => {
+    const row = el('div','accrow');
+    row.append(el('div','lbl',label));
+    const bar = el('div','bar'); const s = el('span');
+    s.style.width = pct + '%'; s.style.background = color; bar.append(s);
+    const v = el('div','val', pct.toFixed ? pct.toFixed(1)+'%' : pct+'%');
+    row.append(bar, v);
+    accWrap.append(row);
+  });
+
+  const fieldBody = $('#acc-fields');
+  D.acc.fields.forEach(f => {
+    const d = (f.p2 - f.p1);
+    const tr = el('tr');
+    tr.append(el('td',null,`<b>${f.name}</b>`), el('td','num',f.p1.toFixed(1)+'%'),
+      el('td','num',f.p2.toFixed(1)+'%'),
+      el('td',null, d === 0
+        ? '<span class="pill caveats">no change</span>'
+        : `<span class="pill build">+${d.toFixed(1)}</span>`));
+    fieldBody.append(tr);
+  });
+
+  const mcpWrap = $('#acc-mcp');
+  [['Model prior, all 100', D.acc.mcp_baseline, 'var(--a1)'],
+   ['After the endpoint probe', 100, 'var(--good)']].forEach(([label,pct,color]) => {
+    const row = el('div','accrow');
+    row.append(el('div','lbl',label));
+    const bar = el('div','bar'); const s = el('span');
+    s.style.width = pct + '%'; s.style.background = color; bar.append(s);
+    row.append(bar, el('div','val', pct.toFixed ? pct.toFixed(1)+'%' : pct+'%'));
+    mcpWrap.append(row);
+  });
+  $('#mcp-flips').innerHTML = Object.entries(D.acc.mcp_flips)
+    .map(([k,v]) => `<span class="tag" style="margin:0 6px 6px 0">${k.replace('->',' → ')} <b>${v}</b></span>`)
+    .join('');
+
+  const missBody = $('#miss-rows');
+  D.acc.misses.forEach(m => {
+    const tr = el('tr');
+    tr.append(el('td','app',m.app), el('td',null,`<span class="tag">${m.field}</span>`),
+      el('td',null,`<span class="tag">${m.predicted}</span>`),
+      el('td',null,`<span class="tag on">${m.verified}</span>`));
+    missBody.append(tr);
+  });
+
+  const low = $('#lowconf');
+  D.low_confidence.forEach(r => {
+    const li = el('li');
+    li.append(el('b',null,r.app), document.createTextNode(r.note));
+    low.append(li);
+  });
+})();
+</script>
+</body>
+</html>

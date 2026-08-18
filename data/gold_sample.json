@@ -1,0 +1,292 @@
+{
+  "_meta": {
+    "name": "Human-verified gold sample",
+    "size": 22,
+    "how": "Each row was checked by hand against at least two independent sources: the vendor's own documentation plus a second source (vendor pricing/help-centre page, vendor GitHub org, or an automated liveness+content probe of the claimed MCP endpoint). Where the two disagreed, the vendor's own page won. Rows were chosen to span all 10 categories and to over-sample the cases the baseline was most likely to get wrong (long-tail vendors, recent rebrands, ambiguous gating).",
+    "sampling_bias_disclosure": "This is a stratified, deliberately adversarial sample, not a uniform random one. It is a harder test than the average row, so the measured accuracies should be read as a lower bound for the well-known apps and a fair estimate for the long tail.",
+    "verified_by": "manual review, 2026-08-18",
+    "grading_rules": {
+      "auth": "correct if the predicted credential type appears in the verified auth list",
+      "access": "exact match on the four-level scale",
+      "api": "exact match",
+      "mcp": "exact match (official / community / none)",
+      "verdict": "exact match (build / caveats / blocked)"
+    }
+  },
+  "records": [
+    {
+      "id": 1,
+      "app": "Salesforce",
+      "auth": [
+        "oauth2"
+      ],
+      "access": "self_serve_free",
+      "api": "rest",
+      "mcp": "official",
+      "verdict": "build",
+      "sources": 2
+    },
+    {
+      "id": 4,
+      "app": "Attio",
+      "auth": [
+        "oauth2",
+        "api_key"
+      ],
+      "access": "self_serve_free",
+      "api": "rest",
+      "mcp": "official",
+      "verdict": "build",
+      "sources": 2
+    },
+    {
+      "id": 8,
+      "app": "Close",
+      "auth": [
+        "api_key",
+        "oauth2"
+      ],
+      "access": "self_serve_paid",
+      "api": "rest",
+      "mcp": "official",
+      "verdict": "build",
+      "sources": 2
+    },
+    {
+      "id": 10,
+      "app": "DealCloud",
+      "auth": [
+        "api_key",
+        "oauth2"
+      ],
+      "access": "gated",
+      "api": "rest",
+      "mcp": "official",
+      "verdict": "caveats",
+      "sources": 2
+    },
+    {
+      "id": 15,
+      "app": "Pylon",
+      "auth": [
+        "token"
+      ],
+      "access": "self_serve_paid",
+      "api": "rest",
+      "mcp": "official",
+      "verdict": "caveats",
+      "sources": 3
+    },
+    {
+      "id": 17,
+      "app": "Plain",
+      "auth": [
+        "api_key"
+      ],
+      "access": "self_serve_paid",
+      "api": "graphql",
+      "mcp": "official",
+      "verdict": "build",
+      "sources": 2
+    },
+    {
+      "id": 21,
+      "app": "Slack",
+      "auth": [
+        "oauth2",
+        "token"
+      ],
+      "access": "self_serve_free",
+      "api": "rest",
+      "mcp": "official",
+      "verdict": "build",
+      "sources": 3
+    },
+    {
+      "id": 24,
+      "app": "Lark (Larksuite)",
+      "auth": [
+        "custom"
+      ],
+      "access": "gated",
+      "api": "rest",
+      "mcp": "official",
+      "verdict": "caveats",
+      "sources": 2
+    },
+    {
+      "id": 31,
+      "app": "Google Ads",
+      "auth": [
+        "oauth2",
+        "token"
+      ],
+      "access": "gated",
+      "api": "both",
+      "mcp": "official",
+      "verdict": "caveats",
+      "sources": 2
+    },
+    {
+      "id": 33,
+      "app": "LinkedIn Ads",
+      "auth": [
+        "oauth2"
+      ],
+      "access": "partner",
+      "api": "rest",
+      "mcp": "none",
+      "verdict": "caveats",
+      "sources": 2
+    },
+    {
+      "id": 37,
+      "app": "systeme.io",
+      "auth": [
+        "api_key"
+      ],
+      "access": "self_serve_free",
+      "api": "rest",
+      "mcp": "none",
+      "verdict": "build",
+      "sources": 2
+    },
+    {
+      "id": 46,
+      "app": "Squarespace",
+      "auth": [
+        "api_key",
+        "oauth2"
+      ],
+      "access": "self_serve_paid",
+      "api": "rest",
+      "mcp": "none",
+      "verdict": "caveats",
+      "sources": 2
+    },
+    {
+      "id": 47,
+      "app": "Ecwid",
+      "auth": [
+        "token",
+        "oauth2"
+      ],
+      "access": "self_serve_paid",
+      "api": "rest",
+      "mcp": "none",
+      "verdict": "build",
+      "sources": 2
+    },
+    {
+      "id": 50,
+      "app": "fanbasis",
+      "auth": [
+        "api_key"
+      ],
+      "access": "self_serve_paid",
+      "api": "rest",
+      "mcp": "none",
+      "verdict": "build",
+      "sources": 2
+    },
+    {
+      "id": 51,
+      "app": "DataForSEO",
+      "auth": [
+        "basic"
+      ],
+      "access": "self_serve_paid",
+      "api": "rest",
+      "mcp": "official",
+      "verdict": "build",
+      "sources": 2
+    },
+    {
+      "id": 60,
+      "app": "Clay",
+      "auth": [
+        "api_key"
+      ],
+      "access": "self_serve_free",
+      "api": "rest",
+      "mcp": "official",
+      "verdict": "caveats",
+      "sources": 2
+    },
+    {
+      "id": 79,
+      "app": "Smartsheet",
+      "auth": [
+        "token",
+        "oauth2"
+      ],
+      "access": "self_serve_paid",
+      "api": "rest",
+      "mcp": "official",
+      "verdict": "build",
+      "sources": 2
+    },
+    {
+      "id": 85,
+      "app": "iPayX",
+      "auth": [
+        "api_key"
+      ],
+      "access": "self_serve_free",
+      "api": "rest",
+      "mcp": "official",
+      "verdict": "build",
+      "sources": 2
+    },
+    {
+      "id": 90,
+      "app": "PitchBook",
+      "auth": [
+        "unknown"
+      ],
+      "access": "partner",
+      "api": "rest",
+      "mcp": "none",
+      "verdict": "blocked",
+      "sources": 2
+    },
+    {
+      "id": 92,
+      "app": "Otter AI",
+      "auth": [
+        "token",
+        "oauth2"
+      ],
+      "access": "gated",
+      "api": "none",
+      "mcp": "official",
+      "verdict": "caveats",
+      "sources": 2
+    },
+    {
+      "id": 94,
+      "app": "Consensus",
+      "auth": [
+        "oauth2",
+        "token"
+      ],
+      "access": "self_serve_free",
+      "api": "rest",
+      "mcp": "official",
+      "verdict": "build",
+      "sources": 2
+    },
+    {
+      "id": 99,
+      "app": "YouTube Transcript",
+      "auth": [
+        "api_key"
+      ],
+      "access": "self_serve_free",
+      "api": "rest",
+      "mcp": "official",
+      "verdict": "build",
+      "sources": 2
+    }
+  ]
+}

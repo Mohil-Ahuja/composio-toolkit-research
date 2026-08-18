@@ -1,0 +1,646 @@
+{
+  "sample_size": 22,
+  "judgments_per_pass": 110,
+  "pass1_parametric": {
+    "overall": {
+      "hit": 79,
+      "n": 110,
+      "pct": 71.8
+    },
+    "per_field": {
+      "auth": {
+        "hit": 19,
+        "n": 22,
+        "pct": 86.4
+      },
+      "access": {
+        "hit": 13,
+        "n": 22,
+        "pct": 59.1
+      },
+      "api": {
+        "hit": 20,
+        "n": 22,
+        "pct": 90.9
+      },
+      "mcp": {
+        "hit": 10,
+        "n": 22,
+        "pct": 45.5
+      },
+      "verdict": {
+        "hit": 17,
+        "n": 22,
+        "pct": 77.3
+      }
+    },
+    "per_app": {
+      "Salesforce": 4,
+      "Attio": 4,
+      "Close": 5,
+      "DealCloud": 3,
+      "Pylon": 2,
+      "Plain": 3,
+      "Slack": 4,
+      "Lark (Larksuite)": 3,
+      "Google Ads": 3,
+      "LinkedIn Ads": 5,
+      "systeme.io": 3,
+      "Squarespace": 5,
+      "Ecwid": 5,
+      "fanbasis": 1,
+      "DataForSEO": 5,
+      "Clay": 3,
+      "Smartsheet": 4,
+      "iPayX": 2,
+      "PitchBook": 5,
+      "Otter AI": 4,
+      "Consensus": 2,
+      "YouTube Transcript": 4
+    },
+    "misses": [
+      {
+        "app": "Salesforce",
+        "field": "mcp",
+        "predicted": "community",
+        "verified": "official"
+      },
+      {
+        "app": "Attio",
+        "field": "mcp",
+        "predicted": "community",
+        "verified": "official"
+      },
+      {
+        "app": "DealCloud",
+        "field": "access",
+        "predicted": "partner",
+        "verified": "gated"
+      },
+      {
+        "app": "DealCloud",
+        "field": "mcp",
+        "predicted": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Pylon",
+        "field": "auth",
+        "predicted": "api_key",
+        "verified": "token"
+      },
+      {
+        "app": "Pylon",
+        "field": "access",
+        "predicted": "gated",
+        "verified": "self_serve_paid"
+      },
+      {
+        "app": "Pylon",
+        "field": "mcp",
+        "predicted": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Plain",
+        "field": "access",
+        "predicted": "self_serve_free",
+        "verified": "self_serve_paid"
+      },
+      {
+        "app": "Plain",
+        "field": "mcp",
+        "predicted": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Slack",
+        "field": "mcp",
+        "predicted": "community",
+        "verified": "official"
+      },
+      {
+        "app": "Lark (Larksuite)",
+        "field": "access",
+        "predicted": "self_serve_free",
+        "verified": "gated"
+      },
+      {
+        "app": "Lark (Larksuite)",
+        "field": "verdict",
+        "predicted": "build",
+        "verified": "caveats"
+      },
+      {
+        "app": "Google Ads",
+        "field": "api",
+        "predicted": "rest",
+        "verified": "both"
+      },
+      {
+        "app": "Google Ads",
+        "field": "mcp",
+        "predicted": "none",
+        "verified": "official"
+      },
+      {
+        "app": "systeme.io",
+        "field": "access",
+        "predicted": "self_serve_paid",
+        "verified": "self_serve_free"
+      },
+      {
+        "app": "systeme.io",
+        "field": "verdict",
+        "predicted": "caveats",
+        "verified": "build"
+      },
+      {
+        "app": "fanbasis",
+        "field": "auth",
+        "predicted": "unknown",
+        "verified": "api_key"
+      },
+      {
+        "app": "fanbasis",
+        "field": "access",
+        "predicted": "gated",
+        "verified": "self_serve_paid"
+      },
+      {
+        "app": "fanbasis",
+        "field": "api",
+        "predicted": "none",
+        "verified": "rest"
+      },
+      {
+        "app": "fanbasis",
+        "field": "verdict",
+        "predicted": "blocked",
+        "verified": "build"
+      },
+      {
+        "app": "Clay",
+        "field": "access",
+        "predicted": "self_serve_paid",
+        "verified": "self_serve_free"
+      },
+      {
+        "app": "Clay",
+        "field": "mcp",
+        "predicted": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Smartsheet",
+        "field": "mcp",
+        "predicted": "community",
+        "verified": "official"
+      },
+      {
+        "app": "iPayX",
+        "field": "access",
+        "predicted": "gated",
+        "verified": "self_serve_free"
+      },
+      {
+        "app": "iPayX",
+        "field": "mcp",
+        "predicted": "none",
+        "verified": "official"
+      },
+      {
+        "app": "iPayX",
+        "field": "verdict",
+        "predicted": "caveats",
+        "verified": "build"
+      },
+      {
+        "app": "Otter AI",
+        "field": "auth",
+        "predicted": "unknown",
+        "verified": "token/oauth2"
+      },
+      {
+        "app": "Consensus",
+        "field": "access",
+        "predicted": "gated",
+        "verified": "self_serve_free"
+      },
+      {
+        "app": "Consensus",
+        "field": "mcp",
+        "predicted": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Consensus",
+        "field": "verdict",
+        "predicted": "caveats",
+        "verified": "build"
+      },
+      {
+        "app": "YouTube Transcript",
+        "field": "mcp",
+        "predicted": "none",
+        "verified": "official"
+      }
+    ]
+  },
+  "pass2_single_doc": {
+    "overall": {
+      "hit": 83,
+      "n": 110,
+      "pct": 75.5
+    },
+    "per_field": {
+      "auth": {
+        "hit": 20,
+        "n": 22,
+        "pct": 90.9
+      },
+      "access": {
+        "hit": 13,
+        "n": 22,
+        "pct": 59.1
+      },
+      "api": {
+        "hit": 21,
+        "n": 22,
+        "pct": 95.5
+      },
+      "mcp": {
+        "hit": 11,
+        "n": 22,
+        "pct": 50.0
+      },
+      "verdict": {
+        "hit": 18,
+        "n": 22,
+        "pct": 81.8
+      }
+    },
+    "per_app": {
+      "Salesforce": 4,
+      "Attio": 4,
+      "Close": 4,
+      "DealCloud": 4,
+      "Pylon": 3,
+      "Plain": 4,
+      "Slack": 4,
+      "Lark (Larksuite)": 4,
+      "Google Ads": 5,
+      "LinkedIn Ads": 4,
+      "systeme.io": 3,
+      "Squarespace": 5,
+      "Ecwid": 5,
+      "fanbasis": 1,
+      "DataForSEO": 4,
+      "Clay": 3,
+      "Smartsheet": 4,
+      "iPayX": 2,
+      "PitchBook": 5,
+      "Otter AI": 4,
+      "Consensus": 2,
+      "YouTube Transcript": 5
+    },
+    "misses": [
+      {
+        "app": "Salesforce",
+        "field": "mcp",
+        "predicted": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Attio",
+        "field": "mcp",
+        "predicted": "community",
+        "verified": "official"
+      },
+      {
+        "app": "Close",
+        "field": "mcp",
+        "predicted": "none",
+        "verified": "official"
+      },
+      {
+        "app": "DealCloud",
+        "field": "access",
+        "predicted": "partner",
+        "verified": "gated"
+      },
+      {
+        "app": "Pylon",
+        "field": "access",
+        "predicted": "gated",
+        "verified": "self_serve_paid"
+      },
+      {
+        "app": "Pylon",
+        "field": "mcp",
+        "predicted": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Plain",
+        "field": "access",
+        "predicted": "self_serve_free",
+        "verified": "self_serve_paid"
+      },
+      {
+        "app": "Slack",
+        "field": "mcp",
+        "predicted": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Lark (Larksuite)",
+        "field": "mcp",
+        "predicted": "none",
+        "verified": "official"
+      },
+      {
+        "app": "LinkedIn Ads",
+        "field": "access",
+        "predicted": "gated",
+        "verified": "partner"
+      },
+      {
+        "app": "systeme.io",
+        "field": "access",
+        "predicted": "self_serve_paid",
+        "verified": "self_serve_free"
+      },
+      {
+        "app": "systeme.io",
+        "field": "verdict",
+        "predicted": "caveats",
+        "verified": "build"
+      },
+      {
+        "app": "fanbasis",
+        "field": "auth",
+        "predicted": "unknown",
+        "verified": "api_key"
+      },
+      {
+        "app": "fanbasis",
+        "field": "access",
+        "predicted": "gated",
+        "verified": "self_serve_paid"
+      },
+      {
+        "app": "fanbasis",
+        "field": "api",
+        "predicted": "none",
+        "verified": "rest"
+      },
+      {
+        "app": "fanbasis",
+        "field": "verdict",
+        "predicted": "blocked",
+        "verified": "build"
+      },
+      {
+        "app": "DataForSEO",
+        "field": "mcp",
+        "predicted": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Clay",
+        "field": "access",
+        "predicted": "self_serve_paid",
+        "verified": "self_serve_free"
+      },
+      {
+        "app": "Clay",
+        "field": "mcp",
+        "predicted": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Smartsheet",
+        "field": "mcp",
+        "predicted": "none",
+        "verified": "official"
+      },
+      {
+        "app": "iPayX",
+        "field": "access",
+        "predicted": "gated",
+        "verified": "self_serve_free"
+      },
+      {
+        "app": "iPayX",
+        "field": "mcp",
+        "predicted": "none",
+        "verified": "official"
+      },
+      {
+        "app": "iPayX",
+        "field": "verdict",
+        "predicted": "caveats",
+        "verified": "build"
+      },
+      {
+        "app": "Otter AI",
+        "field": "auth",
+        "predicted": "unknown",
+        "verified": "token/oauth2"
+      },
+      {
+        "app": "Consensus",
+        "field": "access",
+        "predicted": "gated",
+        "verified": "self_serve_free"
+      },
+      {
+        "app": "Consensus",
+        "field": "mcp",
+        "predicted": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Consensus",
+        "field": "verdict",
+        "predicted": "caveats",
+        "verified": "build"
+      }
+    ]
+  },
+  "mcp_full_set_check": {
+    "n": 100,
+    "baseline_correct": 68,
+    "baseline_pct": 68.0,
+    "flips": [
+      {
+        "app": "Salesforce",
+        "baseline": "community",
+        "verified": "official"
+      },
+      {
+        "app": "Attio",
+        "baseline": "community",
+        "verified": "official"
+      },
+      {
+        "app": "Zoho CRM",
+        "baseline": "community",
+        "verified": "official"
+      },
+      {
+        "app": "DealCloud",
+        "baseline": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Zendesk",
+        "baseline": "community",
+        "verified": "official"
+      },
+      {
+        "app": "Front",
+        "baseline": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Pylon",
+        "baseline": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Plain",
+        "baseline": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Gorgias",
+        "baseline": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Slack",
+        "baseline": "community",
+        "verified": "official"
+      },
+      {
+        "app": "Zoho Cliq",
+        "baseline": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Discord",
+        "baseline": "community",
+        "verified": "none"
+      },
+      {
+        "app": "Vonage",
+        "baseline": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Google Ads",
+        "baseline": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Mailchimp",
+        "baseline": "community",
+        "verified": "none"
+      },
+      {
+        "app": "BigCommerce",
+        "baseline": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Ecwid",
+        "baseline": "none",
+        "verified": "community"
+      },
+      {
+        "app": "SE Ranking",
+        "baseline": "none",
+        "verified": "official"
+      },
+      {
+        "app": "MrScraper",
+        "baseline": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Sherlock",
+        "baseline": "community",
+        "verified": "none"
+      },
+      {
+        "app": "Clay",
+        "baseline": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Neo4j",
+        "baseline": "community",
+        "verified": "official"
+      },
+      {
+        "app": "Airtable",
+        "baseline": "community",
+        "verified": "official"
+      },
+      {
+        "app": "ClickUp",
+        "baseline": "community",
+        "verified": "official"
+      },
+      {
+        "app": "Coda",
+        "baseline": "community",
+        "verified": "none"
+      },
+      {
+        "app": "Smartsheet",
+        "baseline": "community",
+        "verified": "official"
+      },
+      {
+        "app": "iPayX",
+        "baseline": "none",
+        "verified": "official"
+      },
+      {
+        "app": "QuickBooks",
+        "baseline": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Fathom",
+        "baseline": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Consensus",
+        "baseline": "none",
+        "verified": "official"
+      },
+      {
+        "app": "Reducto",
+        "baseline": "none",
+        "verified": "official"
+      },
+      {
+        "app": "YouTube Transcript",
+        "baseline": "none",
+        "verified": "official"
+      }
+    ],
+    "flip_direction": {
+      "none->official": 18,
+      "community->official": 9,
+      "community->none": 4,
+      "none->community": 1
+    }
+  },
+  "delta_overall_pct": 3.7
+}

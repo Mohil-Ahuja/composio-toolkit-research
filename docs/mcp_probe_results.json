@@ -1,0 +1,949 @@
+{
+  "_meta": {
+    "probed": 73,
+    "confirmed_official_mcp": 42,
+    "unconfirmed": 31,
+    "bot_blocked_or_error": 2,
+    "rule": "2xx AND (>= 3 'mcp' mentions OR >= 1 'model context protocol')"
+  },
+  "confirmed": [
+    "Ahrefs",
+    "Airtable",
+    "Apify",
+    "Asana",
+    "Atlassian",
+    "Attio",
+    "BrightData",
+    "Close",
+    "Cloudflare",
+    "Consensus",
+    "DataForSEO",
+    "Datadog",
+    "DealCloud",
+    "Devin",
+    "Firecrawl",
+    "Front",
+    "GitHub",
+    "Gorgias",
+    "HubSpot",
+    "Intercom",
+    "Intuit",
+    "Klaviyo",
+    "Linear",
+    "Monday",
+    "MongoDB",
+    "Neo4j",
+    "Netlify",
+    "Notion",
+    "Otter",
+    "Reducto",
+    "Sentry",
+    "Shopify",
+    "Slack",
+    "Smartsheet",
+    "Snowflake",
+    "Stripe",
+    "Supabase",
+    "TranscriptAPI",
+    "Twilio",
+    "Vercel",
+    "Vonage",
+    "Xero"
+  ],
+  "bot_blocked": [
+    "Grain",
+    "Salesforce"
+  ],
+  "redirect_findings": [
+    {
+      "app": "HubSpot",
+      "from": "https://developers.hubspot.com/mcp",
+      "to": "https://developers.hubspot.com/ai-tools/mcp"
+    },
+    {
+      "app": "Twilio",
+      "from": "https://www.twilio.com/docs/mcp",
+      "to": "https://www.twilio.com/docs/ai/mcp"
+    },
+    {
+      "app": "Mailchimp",
+      "from": "https://mailchimp.com/developer/marketing/docs/mcp-server/",
+      "to": "https://mailchimp.com/developer/"
+    },
+    {
+      "app": "Shopify",
+      "from": "https://shopify.dev/docs/apps/build/devmcp",
+      "to": "https://shopify.dev/docs/apps/build/ai-toolkit"
+    },
+    {
+      "app": "AmazonSP",
+      "from": "https://developer-docs.amazon.com/sp-api/docs/mcp",
+      "to": "https://developer-docs.amazon/sp-api/page/404"
+    },
+    {
+      "app": "Apify",
+      "from": "https://docs.apify.com/platform/integrations/mcp",
+      "to": "https://docs.apify.com/integrations/mcp"
+    },
+    {
+      "app": "BrightData",
+      "from": "https://docs.brightdata.com/mcp-server/overview",
+      "to": "https://docs.brightdata.com/ai/mcp-server/overview"
+    },
+    {
+      "app": "Vercel",
+      "from": "https://vercel.com/docs/mcp/vercel-mcp",
+      "to": "https://vercel.com/docs/agent-resources/vercel-mcp"
+    },
+    {
+      "app": "Netlify",
+      "from": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/",
+      "to": "https://docs.netlify.com/build/build-with-ai/agent-setup-guides/agent-setup-overview/#mcp-server-support"
+    },
+    {
+      "app": "Cloudflare",
+      "from": "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/",
+      "to": "https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/"
+    },
+    {
+      "app": "Supabase",
+      "from": "https://supabase.com/docs/guides/getting-started/mcp",
+      "to": "https://supabase.com/docs/guides/ai-tools/mcp"
+    },
+    {
+      "app": "Neo4j",
+      "from": "https://neo4j.com/docs/mcp/",
+      "to": "https://neo4j.com/docs/mcp/current/"
+    },
+    {
+      "app": "Notion",
+      "from": "https://developers.notion.com/docs/mcp",
+      "to": "https://developers.notion.com/guides/mcp/overview"
+    },
+    {
+      "app": "Airtable",
+      "from": "https://support.airtable.com/docs/using-the-airtable-mcp-server",
+      "to": "https://support.airtable.com/articles/9897799762-using-the-airtable-mcp-server"
+    },
+    {
+      "app": "Atlassian",
+      "from": "https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/",
+      "to": "https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/"
+    },
+    {
+      "app": "TranscriptAPI",
+      "from": "https://www.transcriptapi.com/",
+      "to": "https://transcriptapi.com/"
+    },
+    {
+      "app": "fanbasis",
+      "from": "https://fanbasis.com/",
+      "to": "https://commas.com/"
+    }
+  ],
+  "results": [
+    {
+      "app": "Salesforce",
+      "url": "https://developer.salesforce.com/docs/einstein/genai/guide/mcp.html",
+      "status": 403,
+      "final_url": "https://developer.salesforce.com/docs/einstein/genai/guide/mcp.html",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "HubSpot",
+      "url": "https://developers.hubspot.com/mcp",
+      "status": 200,
+      "final_url": "https://developers.hubspot.com/ai-tools/mcp",
+      "mcp_hits": 97,
+      "mcp_full_hits": 3,
+      "confirmed": true,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "Zendesk",
+      "url": "https://developer.zendesk.com/documentation/mcp/",
+      "status": 404,
+      "final_url": "https://developer.zendesk.com/documentation/mcp/",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Intercom",
+      "url": "https://developers.intercom.com/docs/guides/mcp",
+      "status": 200,
+      "final_url": "https://developers.intercom.com/docs/guides/mcp",
+      "mcp_hits": 149,
+      "mcp_full_hits": 12,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Front",
+      "url": "https://dev.frontapp.com/docs/mcp",
+      "status": 200,
+      "final_url": "https://dev.frontapp.com/docs/mcp",
+      "mcp_hits": 68,
+      "mcp_full_hits": 0,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Plain",
+      "url": "https://www.plain.com/docs/mcp",
+      "status": 405,
+      "final_url": "https://www.plain.com/docs/mcp",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Gorgias",
+      "url": "https://developers.gorgias.com/docs/mcp",
+      "status": 200,
+      "final_url": "https://developers.gorgias.com/docs/mcp",
+      "mcp_hits": 139,
+      "mcp_full_hits": 14,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "HelpScout",
+      "url": "https://developer.helpscout.com/mcp/",
+      "status": 404,
+      "final_url": "https://developer.helpscout.com/mcp/",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Freshworks",
+      "url": "https://developers.freshworks.com/mcp/",
+      "status": 404,
+      "final_url": "https://developers.freshworks.com/mcp/",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Gladly",
+      "url": "https://developer.gladly.com/mcp",
+      "status": 404,
+      "final_url": "https://developer.gladly.com/mcp",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Pylon",
+      "url": "https://docs.usepylon.com/pylon-docs/developer/mcp",
+      "status": 404,
+      "final_url": "https://docs.usepylon.com/pylon-docs/developer/mcp",
+      "mcp_hits": 16,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Close",
+      "url": "https://developer.close.com/mcp/",
+      "status": 200,
+      "final_url": "https://developer.close.com/mcp/",
+      "mcp_hits": 605,
+      "mcp_full_hits": 4,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Copper",
+      "url": "https://developer.copper.com/mcp",
+      "status": 404,
+      "final_url": "https://developer.copper.com/mcp",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Pipedrive",
+      "url": "https://developers.pipedrive.com/docs/api/v1/mcp",
+      "status": 404,
+      "final_url": "https://developers.pipedrive.com/docs/api/v1/mcp",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Attio",
+      "url": "https://docs.attio.com/mcp/overview",
+      "status": 200,
+      "final_url": "https://docs.attio.com/mcp/overview",
+      "mcp_hits": 175,
+      "mcp_full_hits": 2,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Twenty",
+      "url": "https://docs.twenty.com/developers/mcp",
+      "status": 404,
+      "final_url": "https://docs.twenty.com/developers/mcp",
+      "mcp_hits": 6,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Podio",
+      "url": "https://developers.podio.com/mcp",
+      "status": 500,
+      "final_url": "https://developers.podio.com/mcp",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "DealCloud",
+      "url": "https://api.docs.dealcloud.com/",
+      "status": 200,
+      "final_url": "https://api.docs.dealcloud.com/",
+      "mcp_hits": 6,
+      "mcp_full_hits": 0,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Slack",
+      "url": "https://docs.slack.dev/ai/slack-mcp-server/",
+      "status": 200,
+      "final_url": "https://docs.slack.dev/ai/slack-mcp-server/",
+      "mcp_hits": 83,
+      "mcp_full_hits": 0,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Twilio",
+      "url": "https://www.twilio.com/docs/mcp",
+      "status": 200,
+      "final_url": "https://www.twilio.com/docs/ai/mcp",
+      "mcp_hits": 145,
+      "mcp_full_hits": 7,
+      "confirmed": true,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "Lark",
+      "url": "https://open.larksuite.com/document/mcp",
+      "status": 200,
+      "final_url": "https://open.larksuite.com/document/mcp",
+      "mcp_hits": 1,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Discord",
+      "url": "https://discord.com/developers/docs/mcp",
+      "status": 404,
+      "final_url": "https://docs.discord.com/developers/mcp",
+      "mcp_hits": 6,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "Telegram",
+      "url": "https://core.telegram.org/mcp",
+      "status": 200,
+      "final_url": "https://core.telegram.org/mcp",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Vonage",
+      "url": "https://developer.vonage.com/en/mcp",
+      "status": 200,
+      "final_url": "https://developer.vonage.com/en/mcp",
+      "mcp_hits": 5,
+      "mcp_full_hits": 0,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "GoogleAds",
+      "url": "https://developers.google.com/google-ads/api/docs/get-started/introduction",
+      "status": 200,
+      "final_url": "https://developers.google.com/google-ads/api/docs/get-started/introduction",
+      "mcp_hits": 2,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Klaviyo",
+      "url": "https://developers.klaviyo.com/en/docs/klaviyo_mcp_server",
+      "status": 200,
+      "final_url": "https://developers.klaviyo.com/en/docs/klaviyo_mcp_server",
+      "mcp_hits": 482,
+      "mcp_full_hits": 8,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Mailchimp",
+      "url": "https://mailchimp.com/developer/marketing/docs/mcp-server/",
+      "status": 200,
+      "final_url": "https://mailchimp.com/developer/",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "GoHighLevel",
+      "url": "https://marketplace.gohighlevel.com/docs/mcp",
+      "status": 200,
+      "final_url": "https://marketplace.gohighlevel.com/docs/mcp",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Shopify",
+      "url": "https://shopify.dev/docs/apps/build/devmcp",
+      "status": 200,
+      "final_url": "https://shopify.dev/docs/apps/build/ai-toolkit",
+      "mcp_hits": 106,
+      "mcp_full_hits": 0,
+      "confirmed": true,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "BigCommerce",
+      "url": "https://developer.bigcommerce.com/docs/mcp",
+      "status": 404,
+      "final_url": "https://docs.bigcommerce.com/docs/mcp",
+      "mcp_hits": 12,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "Magento",
+      "url": "https://developer.adobe.com/commerce/services/mcp/",
+      "status": 404,
+      "final_url": "https://developer.adobe.com/commerce/services/mcp/",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Squarespace",
+      "url": "https://developers.squarespace.com/mcp",
+      "status": 404,
+      "final_url": "https://developers.squarespace.com/mcp",
+      "mcp_hits": 1,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Ecwid",
+      "url": "https://docs.ecwid.com/mcp",
+      "status": 404,
+      "final_url": "https://docs.ecwid.com/mcp",
+      "mcp_hits": 13,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "AmazonSP",
+      "url": "https://developer-docs.amazon.com/sp-api/docs/mcp",
+      "status": 200,
+      "final_url": "https://developer-docs.amazon/sp-api/page/404",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "DataForSEO",
+      "url": "https://github.com/dataforseo/mcp-server-typescript",
+      "status": 200,
+      "final_url": "https://github.com/dataforseo/mcp-server-typescript",
+      "mcp_hits": 378,
+      "mcp_full_hits": 0,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Apify",
+      "url": "https://docs.apify.com/platform/integrations/mcp",
+      "status": 200,
+      "final_url": "https://docs.apify.com/integrations/mcp",
+      "mcp_hits": 134,
+      "mcp_full_hits": 3,
+      "confirmed": true,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "Firecrawl",
+      "url": "https://docs.firecrawl.dev/mcp-server",
+      "status": 200,
+      "final_url": "https://docs.firecrawl.dev/mcp-server",
+      "mcp_hits": 138,
+      "mcp_full_hits": 1,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "BrightData",
+      "url": "https://docs.brightdata.com/mcp-server/overview",
+      "status": 200,
+      "final_url": "https://docs.brightdata.com/ai/mcp-server/overview",
+      "mcp_hits": 240,
+      "mcp_full_hits": 3,
+      "confirmed": true,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "Ahrefs",
+      "url": "https://ahrefs.com/mcp",
+      "status": 200,
+      "final_url": "https://ahrefs.com/mcp/",
+      "mcp_hits": 55,
+      "mcp_full_hits": 1,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "GitHub",
+      "url": "https://github.com/github/github-mcp-server",
+      "status": 200,
+      "final_url": "https://github.com/github/github-mcp-server",
+      "mcp_hits": 868,
+      "mcp_full_hits": 0,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Vercel",
+      "url": "https://vercel.com/docs/mcp/vercel-mcp",
+      "status": 200,
+      "final_url": "https://vercel.com/docs/agent-resources/vercel-mcp",
+      "mcp_hits": 127,
+      "mcp_full_hits": 5,
+      "confirmed": true,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "Netlify",
+      "url": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/",
+      "status": 200,
+      "final_url": "https://docs.netlify.com/build/build-with-ai/agent-setup-guides/agent-setup-overview/#mcp-server-support",
+      "mcp_hits": 60,
+      "mcp_full_hits": 0,
+      "confirmed": true,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "Cloudflare",
+      "url": "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/",
+      "status": 200,
+      "final_url": "https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/",
+      "mcp_hits": 151,
+      "mcp_full_hits": 2,
+      "confirmed": true,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "Supabase",
+      "url": "https://supabase.com/docs/guides/getting-started/mcp",
+      "status": 200,
+      "final_url": "https://supabase.com/docs/guides/ai-tools/mcp",
+      "mcp_hits": 163,
+      "mcp_full_hits": 4,
+      "confirmed": true,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "Neo4j",
+      "url": "https://neo4j.com/docs/mcp/",
+      "status": 200,
+      "final_url": "https://neo4j.com/docs/mcp/current/",
+      "mcp_hits": 26,
+      "mcp_full_hits": 1,
+      "confirmed": true,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "Snowflake",
+      "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+      "status": 200,
+      "final_url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+      "mcp_hits": 624,
+      "mcp_full_hits": 7,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "MongoDB",
+      "url": "https://www.mongodb.com/docs/mcp-server/",
+      "status": 200,
+      "final_url": "https://www.mongodb.com/docs/mcp-server/",
+      "mcp_hits": 184,
+      "mcp_full_hits": 0,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Datadog",
+      "url": "https://docs.datadoghq.com/mcp_server/",
+      "status": 200,
+      "final_url": "https://docs.datadoghq.com/mcp_server/",
+      "mcp_hits": 169,
+      "mcp_full_hits": 1,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Sentry",
+      "url": "https://mcp.sentry.dev/",
+      "status": 200,
+      "final_url": "https://mcp.sentry.dev/",
+      "mcp_hits": 29,
+      "mcp_full_hits": 4,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Notion",
+      "url": "https://developers.notion.com/docs/mcp",
+      "status": 200,
+      "final_url": "https://developers.notion.com/guides/mcp/overview",
+      "mcp_hits": 188,
+      "mcp_full_hits": 2,
+      "confirmed": true,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "Airtable",
+      "url": "https://support.airtable.com/docs/using-the-airtable-mcp-server",
+      "status": 200,
+      "final_url": "https://support.airtable.com/articles/9897799762-using-the-airtable-mcp-server",
+      "mcp_hits": 83,
+      "mcp_full_hits": 4,
+      "confirmed": true,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "Linear",
+      "url": "https://linear.app/docs/mcp",
+      "status": 200,
+      "final_url": "https://linear.app/docs/mcp",
+      "mcp_hits": 540,
+      "mcp_full_hits": 4,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Atlassian",
+      "url": "https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/",
+      "status": 200,
+      "final_url": "https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/",
+      "mcp_hits": 387,
+      "mcp_full_hits": 0,
+      "confirmed": true,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "Asana",
+      "url": "https://developers.asana.com/docs/using-asanas-mcp-server",
+      "status": 200,
+      "final_url": "https://developers.asana.com/docs/using-asanas-mcp-server",
+      "mcp_hits": 215,
+      "mcp_full_hits": 7,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Monday",
+      "url": "https://developer.monday.com/apps/docs/mondaycom-mcp-integration",
+      "status": 200,
+      "final_url": "https://developer.monday.com/apps/docs/mondaycom-mcp-integration",
+      "mcp_hits": 213,
+      "mcp_full_hits": 7,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "ClickUp",
+      "url": "https://developer.clickup.com/docs/mcp",
+      "status": 404,
+      "final_url": "https://developer.clickup.com/docs/mcp",
+      "mcp_hits": 36,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Coda",
+      "url": "https://coda.io/developers/mcp",
+      "status": 404,
+      "final_url": "https://docs.superhuman.com/developers/mcp",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "Smartsheet",
+      "url": "https://www.smartsheet.com/content-center/smartsheet-mcp-server-now-generally-available",
+      "status": 200,
+      "final_url": "https://www.smartsheet.com/content-center/smartsheet-mcp-server-now-generally-available",
+      "mcp_hits": 54,
+      "mcp_full_hits": 1,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Harvest",
+      "url": "https://help.getharvest.com/api-v2/mcp",
+      "status": 404,
+      "final_url": "https://help.getharvest.com/api-v2/mcp",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Stripe",
+      "url": "https://docs.stripe.com/mcp",
+      "status": 200,
+      "final_url": "https://docs.stripe.com/mcp",
+      "mcp_hits": 127,
+      "mcp_full_hits": 18,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Plaid",
+      "url": "https://plaid.com/docs/mcp/",
+      "status": 404,
+      "final_url": "https://plaid.com/docs/mcp/",
+      "mcp_hits": 2,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Xero",
+      "url": "https://github.com/XeroAPI/xero-mcp-server",
+      "status": 200,
+      "final_url": "https://github.com/XeroAPI/xero-mcp-server",
+      "mcp_hits": 233,
+      "mcp_full_hits": 2,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Intuit",
+      "url": "https://developer.intuit.com/app/developer/qbo/docs/develop/mcp",
+      "status": 200,
+      "final_url": "https://developer.intuit.com/app/developer/qbo/docs/develop/mcp",
+      "mcp_hits": 14,
+      "mcp_full_hits": 0,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Ramp",
+      "url": "https://docs.ramp.com/developer-api/v1/mcp",
+      "status": 200,
+      "final_url": "https://docs.ramp.com/developer-api/v1/mcp",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Devin",
+      "url": "https://docs.devin.ai/work-with-devin/devin-mcp",
+      "status": 200,
+      "final_url": "https://docs.devin.ai/work-with-devin/devin-mcp",
+      "mcp_hits": 232,
+      "mcp_full_hits": 5,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Reducto",
+      "url": "https://docs.reducto.ai/overview",
+      "status": 200,
+      "final_url": "https://docs.reducto.ai/overview",
+      "mcp_hits": 18,
+      "mcp_full_hits": 1,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Otter",
+      "url": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+      "status": 200,
+      "final_url": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+      "mcp_hits": 92,
+      "mcp_full_hits": 5,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Consensus",
+      "url": "https://docs.consensus.app/docs/mcp",
+      "status": 200,
+      "final_url": "https://docs.consensus.app/docs/mcp",
+      "mcp_hits": 215,
+      "mcp_full_hits": 3,
+      "confirmed": true,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "iPayX",
+      "url": "https://www.ipayx.ai/docs/mcp-server",
+      "status": 200,
+      "final_url": "https://www.ipayx.ai/docs/mcp-server",
+      "mcp_hits": 1,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Grain",
+      "url": "https://developers.grain.com/docs/mcp",
+      "status": 403,
+      "final_url": "https://developers.grain.com/docs/mcp",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "Fathom",
+      "url": "https://help.fathom.video/en/articles/8368641",
+      "status": 200,
+      "final_url": "https://help.fathom.video/en/articles/8368641",
+      "mcp_hits": 0,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": false
+    },
+    {
+      "app": "TranscriptAPI",
+      "url": "https://www.transcriptapi.com/",
+      "status": 200,
+      "final_url": "https://transcriptapi.com/",
+      "mcp_hits": 57,
+      "mcp_full_hits": 1,
+      "confirmed": true,
+      "error": null,
+      "redirected": true
+    },
+    {
+      "app": "fanbasis",
+      "url": "https://fanbasis.com/",
+      "status": 200,
+      "final_url": "https://commas.com/",
+      "mcp_hits": 1,
+      "mcp_full_hits": 0,
+      "confirmed": false,
+      "error": null,
+      "redirected": true
+    }
+  ]
+}

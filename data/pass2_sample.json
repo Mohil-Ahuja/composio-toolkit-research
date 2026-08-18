@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "pass": "2 — single primary-doc retrieval",
+    "method": "One WebFetch of the app's best-guess authentication/getting-started doc URL, summarised into the five graded fields. Where the doc was silent ('not stated') or the URL 404'd, the pass-1 parametric prior was carried forward — which is exactly what a naive one-shot research agent does.",
+    "scope": "Encoded for the 22-app gold sample only, because that is the sample the accuracy numbers are computed on.",
+    "fetch_outcome": "ok = doc fetched and answered; silent = doc fetched but did not address the field; failed = 404/403/redirect not followed"
+  },
+  "records": [
+    {"id":1,  "auth":"oauth2",  "access":"self_serve_free", "api":"rest",    "mcp":"none",      "verdict":"build",   "fetch_outcome":"ok (gating + MCP silent)"},
+    {"id":4,  "auth":"api_key", "access":"self_serve_free", "api":"rest",    "mcp":"community", "verdict":"build",   "fetch_outcome":"failed (404, then 308 redirect loop)"},
+    {"id":8,  "auth":"api_key", "access":"self_serve_paid", "api":"rest",    "mcp":"none",      "verdict":"build",   "fetch_outcome":"ok (gating + MCP silent)"},
+    {"id":10, "auth":"api_key", "access":"partner",         "api":"rest",    "mcp":"official",  "verdict":"caveats", "fetch_outcome":"ok on retry (root URL); gating silent"},
+    {"id":15, "auth":"token",   "access":"gated",           "api":"rest",    "mcp":"none",      "verdict":"caveats", "fetch_outcome":"ok on third URL guess"},
+    {"id":17, "auth":"api_key", "access":"self_serve_free", "api":"graphql", "mcp":"official",  "verdict":"build",   "fetch_outcome":"ok (pricing silent)"},
+    {"id":21, "auth":"oauth2",  "access":"self_serve_free", "api":"rest",    "mcp":"none",      "verdict":"build",   "fetch_outcome":"ok (API style + MCP silent)"},
+    {"id":24, "auth":"custom",  "access":"gated",           "api":"rest",    "mcp":"none",      "verdict":"caveats", "fetch_outcome":"ok (partly Chinese-only page)"},
+    {"id":31, "auth":"oauth2",  "access":"gated",           "api":"both",    "mcp":"official",  "verdict":"caveats", "fetch_outcome":"ok"},
+    {"id":33, "auth":"oauth2",  "access":"gated",           "api":"rest",    "mcp":"none",      "verdict":"caveats", "fetch_outcome":"ok (dumped 8k-word raw page)"},
+    {"id":37, "auth":"api_key", "access":"self_serve_paid", "api":"rest",    "mcp":"none",      "verdict":"caveats", "fetch_outcome":"failed (404)"},
+    {"id":46, "auth":"api_key", "access":"self_serve_paid", "api":"rest",    "mcp":"none",      "verdict":"caveats", "fetch_outcome":"failed (404)"},
+    {"id":47, "auth":"oauth2",  "access":"self_serve_paid", "api":"rest",    "mcp":"none",      "verdict":"build",   "fetch_outcome":"failed (302 to docs root)"},
+    {"id":50, "auth":"unknown", "access":"gated",           "api":"none",    "mcp":"none",      "verdict":"blocked", "fetch_outcome":"failed (301 to a different company domain, not followed)"},
+    {"id":51, "auth":"basic",   "access":"self_serve_paid", "api":"rest",    "mcp":"none",      "verdict":"build",   "fetch_outcome":"ok (pricing + MCP silent)"},
+    {"id":60, "auth":"api_key", "access":"self_serve_paid", "api":"rest",    "mcp":"none",      "verdict":"caveats", "fetch_outcome":"failed (404)"},
+    {"id":79, "auth":"token",   "access":"self_serve_paid", "api":"rest",    "mcp":"none",      "verdict":"build",   "fetch_outcome":"ok (plan + breadth silent)"},
+    {"id":85, "auth":"api_key", "access":"gated",           "api":"rest",    "mcp":"none",      "verdict":"caveats", "fetch_outcome":"failed (404 on /docs)"},
+    {"id":90, "auth":"unknown", "access":"partner",         "api":"rest",    "mcp":"none",      "verdict":"blocked", "fetch_outcome":"failed (403 bot block)"},
+    {"id":92, "auth":"unknown", "access":"gated",           "api":"none",    "mcp":"official",  "verdict":"caveats", "fetch_outcome":"failed (403 bot block)"},
+    {"id":94, "auth":"oauth2",  "access":"gated",           "api":"rest",    "mcp":"none",      "verdict":"caveats", "fetch_outcome":"failed (403 bot block)"},
+    {"id":99, "auth":"api_key", "access":"self_serve_free", "api":"rest",    "mcp":"official",  "verdict":"build",   "fetch_outcome":"ok"}
+  ]
+}

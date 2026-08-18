@@ -1,0 +1,282 @@
+{
+  "n": 100,
+  "auth_primary": {
+    "api_key": 38,
+    "oauth2": 31,
+    "token": 19,
+    "basic": 7,
+    "none": 2,
+    "unknown": 2,
+    "custom": 1
+  },
+  "auth_any": {
+    "oauth2": 62,
+    "api_key": 42,
+    "token": 36,
+    "basic": 10,
+    "custom": 7,
+    "none": 2,
+    "unknown": 2
+  },
+  "access": {
+    "self_serve_free": 57,
+    "self_serve_paid": 25,
+    "gated": 14,
+    "partner": 4
+  },
+  "api": {
+    "rest": 88,
+    "both": 5,
+    "graphql": 4,
+    "none": 3
+  },
+  "mcp": {
+    "official": 57,
+    "none": 37,
+    "community": 6
+  },
+  "verdict": {
+    "build": 71,
+    "caveats": 27,
+    "blocked": 2
+  },
+  "confidence": {
+    "high": 66,
+    "medium": 32,
+    "low": 2
+  },
+  "by_category": {
+    "CRM and Sales": {
+      "access": {
+        "self_serve_free": 6,
+        "self_serve_paid": 3,
+        "gated": 1
+      },
+      "mcp": {
+        "official": 6,
+        "none": 3,
+        "community": 1
+      },
+      "verdict": {
+        "build": 8,
+        "caveats": 2
+      },
+      "auth_primary": {
+        "oauth2": 5,
+        "api_key": 5
+      }
+    },
+    "Support and Helpdesk": {
+      "access": {
+        "self_serve_paid": 7,
+        "self_serve_free": 2,
+        "gated": 1
+      },
+      "mcp": {
+        "official": 6,
+        "none": 4
+      },
+      "verdict": {
+        "build": 7,
+        "caveats": 3
+      },
+      "auth_primary": {
+        "api_key": 4,
+        "oauth2": 3,
+        "token": 2,
+        "basic": 1
+      }
+    },
+    "Communications and Messaging": {
+      "access": {
+        "self_serve_free": 7,
+        "gated": 2,
+        "self_serve_paid": 1
+      },
+      "mcp": {
+        "official": 5,
+        "none": 4,
+        "community": 1
+      },
+      "verdict": {
+        "build": 8,
+        "caveats": 2
+      },
+      "auth_primary": {
+        "oauth2": 4,
+        "basic": 2,
+        "api_key": 2,
+        "custom": 1,
+        "token": 1
+      }
+    },
+    "Marketing, Ads, Email and Social": {
+      "access": {
+        "gated": 4,
+        "self_serve_free": 4,
+        "partner": 1,
+        "self_serve_paid": 1
+      },
+      "mcp": {
+        "none": 8,
+        "official": 2
+      },
+      "verdict": {
+        "caveats": 5,
+        "build": 5
+      },
+      "auth_primary": {
+        "oauth2": 6,
+        "api_key": 4
+      }
+    },
+    "Ecommerce": {
+      "access": {
+        "self_serve_free": 5,
+        "self_serve_paid": 3,
+        "partner": 1,
+        "gated": 1
+      },
+      "mcp": {
+        "none": 6,
+        "official": 2,
+        "community": 2
+      },
+      "verdict": {
+        "build": 7,
+        "caveats": 3
+      },
+      "auth_primary": {
+        "oauth2": 5,
+        "token": 2,
+        "api_key": 2,
+        "basic": 1
+      }
+    },
+    "Data, SEO and Scraping": {
+      "access": {
+        "self_serve_paid": 6,
+        "self_serve_free": 4
+      },
+      "mcp": {
+        "official": 8,
+        "none": 2
+      },
+      "verdict": {
+        "build": 7,
+        "caveats": 3
+      },
+      "auth_primary": {
+        "api_key": 8,
+        "basic": 1,
+        "none": 1
+      }
+    },
+    "Developer, Infra and Data platforms": {
+      "access": {
+        "self_serve_free": 10
+      },
+      "mcp": {
+        "official": 10
+      },
+      "verdict": {
+        "build": 10
+      },
+      "auth_primary": {
+        "api_key": 4,
+        "token": 3,
+        "oauth2": 2,
+        "basic": 1
+      }
+    },
+    "Productivity and Project Management": {
+      "access": {
+        "self_serve_free": 9,
+        "self_serve_paid": 1
+      },
+      "mcp": {
+        "official": 8,
+        "none": 2
+      },
+      "verdict": {
+        "build": 9,
+        "caveats": 1
+      },
+      "auth_primary": {
+        "token": 7,
+        "oauth2": 1,
+        "api_key": 1,
+        "basic": 1
+      }
+    },
+    "Finance and Fintech": {
+      "access": {
+        "self_serve_free": 5,
+        "gated": 3,
+        "partner": 2
+      },
+      "mcp": {
+        "none": 5,
+        "official": 4,
+        "community": 1
+      },
+      "verdict": {
+        "build": 4,
+        "caveats": 4,
+        "blocked": 2
+      },
+      "auth_primary": {
+        "api_key": 4,
+        "oauth2": 3,
+        "unknown": 2,
+        "token": 1
+      }
+    },
+    "AI, Research and Media-native": {
+      "access": {
+        "self_serve_free": 5,
+        "self_serve_paid": 3,
+        "gated": 2
+      },
+      "mcp": {
+        "official": 6,
+        "none": 3,
+        "community": 1
+      },
+      "verdict": {
+        "build": 6,
+        "caveats": 4
+      },
+      "auth_primary": {
+        "api_key": 4,
+        "token": 3,
+        "oauth2": 2,
+        "none": 1
+      }
+    }
+  },
+  "self_serve_rate_by_category": {
+    "Ecommerce": 80,
+    "Data, SEO and Scraping": 100,
+    "Finance and Fintech": 50,
+    "Marketing, Ads, Email and Social": 50,
+    "Support and Helpdesk": 90,
+    "Productivity and Project Management": 100,
+    "AI, Research and Media-native": 80,
+    "Communications and Messaging": 80,
+    "Developer, Infra and Data platforms": 100,
+    "CRM and Sales": 90
+  },
+  "mcp_rate_by_category": {
+    "Ecommerce": 20,
+    "Data, SEO and Scraping": 80,
+    "Finance and Fintech": 40,
+    "Marketing, Ads, Email and Social": 20,
+    "Support and Helpdesk": 60,
+    "Productivity and Project Management": 80,
+    "AI, Research and Media-native": 60,
+    "Communications and Messaging": 50,
+    "Developer, Infra and Data platforms": 100,
+    "CRM and Sales": 60
+  }
+}
