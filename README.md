@@ -5,7 +5,8 @@ assessed for whether it could become an agent-callable toolkit today — auth me
 developer can get credentials without asking permission, API surface and breadth, official MCP
 status, a buildability verdict, and the evidence URL behind every call.
 
-- **Live case study:** [`docs/index.html`](docs/index.html) — served by GitHub Pages from `/docs`
+- **Live case study:** https://mohil-ahuja.github.io/composio-toolkit-research/
+- **Source:** https://github.com/Mohil-Ahuja/composio-toolkit-research
 - **Findings, machine-readable:** [`data/findings.json`](data/findings.json)
 - **Accuracy scoring:** [`data/accuracy.json`](data/accuracy.json)
 
